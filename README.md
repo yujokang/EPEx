@@ -29,7 +29,7 @@ but improperly reported.
 ##How does EPEx work?
 Besides the program source code, EPEx takes error specifications,
 that specify error protocol(s) of the test functions, as input.
-EPEx uses under-constrained symbolic execution to discover 
+EPEx uses under-constrained symbolic execution to explore
 execution paths in which each test function can fail and return an error code.
 In each of such error paths, EPEx checks if the caller function 
 performs at least one of the following steps: exits with an error code, returns an error value,
