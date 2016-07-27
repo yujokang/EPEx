@@ -1,0 +1,57 @@
+wolfSSL_accept, -1, -213, GE, -101, LE, I
+wolfSSL_connect, -1, -213, GE, -101, LE, I
+wolfSSL_CTX_load_verify_locations, -1, -213, GE, -101, LE, I
+
+ecc_projective_dbl_point, -1, -213, GE, -101, LE, I
+
+mp_init, -1, -2, EQ, -1, -1, I
+
+wc_AesSetIV, -1, -173, EQ, -1, -1, I
+
+wc_CamelliaSetIV, -1, -173, EQ, -1, -1, I
+wc_Chacha_Process, -1, -173, EQ, -1, -1, I
+wc_Chacha_SetKey, -1, -173, EQ, -1, -1, I
+wc_curve25519_make_key, -1, -199, GE, -170, LE, I
+
+wc_DerToPem, -1, -173, GE, -125, LE, I
+wc_DhAgree, -1, -113, GE, -110, LE, I
+wc_DhKeyDecode, -1, -158, GE, -140, LE, I
+
+wc_ecc_export_x963, -1, -202, GE, -110, LE, I
+wc_ecc_import_x963, -1, -174, GE, -125, LE, I
+wc_ecc_init, -1, -125, EQ, -1, -1, I
+wc_ecc_make_key, -1, -213, GE, -101, LE, I
+wc_ecc_shared_secret, -1, -213, GE, -101, LE, I
+wc_ecc_sign_hash, -1, -213, GE, -101, LE, I
+wc_ed25519_import_public, -1, -173, EQ, -1, -1, I
+wc_ed25519_size, -1, -173, EQ, -1, -1, I
+
+wc_FreeRng, -1, -199, GE, -173, LE, I
+
+wc_Hc128_Process, -1, -187, GE, -125, LE, I
+wc_HmacFinal, -1, -125, EQ, -1, -1, I
+wc_HmacSetKey, -1, -213, GE, -101, LE, I
+wc_HmacUpdate, -1, -125, EQ, -1, -1, I
+
+wc_InitRng, -1, -213, GE, -101, LE, I
+wc_InitRsaKey, -1, -173, EQ, -1, -1, I
+
+wc_PBKDF1, -1, -173, GE, -125, LE, I
+wc_PBKDF2, -1, -173, GE, -125, LE, I
+wc_PKCS7_InitWithCert, -1, -213, GE, -101, LE, I
+wc_Poly1305Final, -1, -173, EQ, -1, -1, I
+wc_Poly1305SetKey, -1, -173, EQ, -1, -1, I
+
+wc_RNG_GenerateBlock, -1, -209, GE, -173, LE, I
+wc_RsaPrivateDecrypt, -1, -173, GE, -125, LE, I
+wc_RsaPublicEncrypt, -1, -213, GE, -101, LE, I
+wc_RsaPublicKeyDecode, -1, -213, GE, -101, LE, I
+wc_RsaSSL_Sign, -1, -131, EQ, -1, -1, I
+wc_RsaSSL_Verify, -1, -125, EQ, -1, -1, I
+
+wc_Sha256Hash, -1, -125, EQ, -1, -1, I
+wc_Sha512Hash, -1, -125, EQ, -1, -1, I
+wc_ShaHash, -1, -125, EQ, -1, -1, I
+wc_SignCert, -1, -132, GE, -125, LE, I
+
+__RETURN_VAL__, -1, 0, NE, -1, -1, I

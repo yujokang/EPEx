@@ -1,0 +1,94 @@
+RAND_bytes, 2, -1, GE, 0, LE, I
+RAND_pseudo_bytes, 2, -1, GE, 0, LE, I
+
+ASN1_INTEGER_set_int64, -1, 0, EQ, -1, -1, I
+ASN1_INTEGER_set, -1, 0, EQ, -1, -1, I
+ASN1_ENUMERATED_set_int64, -1, 0, EQ, -1, -1, I
+ASN1_ENUMERATED_set, -1, 0, EQ, -1, -1, I
+
+BN_add, 3, 0, EQ, -1, -1, I
+BN_sub, 3, 0, EQ, -1, -1, I
+BN_mul, -1, 0, EQ, -1, -1, I
+BN_sqr, -1, 0, EQ, -1, -1, I
+BN_div, -1, 0, EQ, -1, -1, I
+BN_mod, -1, 0, EQ, -1, -1, I
+BN_nnmod, -1, 0, EQ, -1, -1, I
+BN_mod_add, -1, 0, EQ, -1, -1, I
+BN_mod_sub, -1, 0, EQ, -1, -1, I
+BN_mod_mul, -1, 0, EQ, -1, -1, I
+BN_mod_sqr, -1, 0, EQ, -1, -1, I
+BN_exp, -1, 0, EQ, -1, -1, I
+BN_mod_exp, -1, 0, EQ, -1, -1, I
+BN_gcd, -1, 0, EQ, -1, -1, I
+
+EC_GROUP_set_curve_GFp, -1, 0, EQ, -1, -1, I
+EC_GROUP_get_curve_GFp, -1, 0, EQ, -1, -1, I
+EC_GROUP_set_curve_GF2m, -1, 0, EQ, -1, -1, I
+EC_GROUP_get_curve_GF2m, -1, 0, EQ, -1, -1, I
+EC_GROUP_copy, -1, 0, EQ, -1, -1, I
+EC_GROUP_set_generator, -1, 0, EQ, -1, -1, I
+EC_GROUP_check, -1, 0, EQ, -1, -1, I
+EC_GROUP_check_discriminant, -1, 0, EQ, -1, -1, I
+EC_GROUP_get_trinomial_basis, -1, 0, EQ, -1, -1, I
+EC_GROUP_get_pentanomial_basis, -1, 0, EQ, -1, -1, I
+
+EC_KEY_up_ref, -1, 0, EQ, -1, -1, I
+EC_KEY_set_group, -1, 0, EQ, -1, -1, I
+EC_KEY_set_private_key, -1, 0, EQ, -1, -1, I
+EC_KEY_set_public_key, -1, 0, EQ, -1, -1, I
+EC_KEY_precompute_mult, -1, 0, EQ, -1, -1, I
+EC_KEY_generate_key, -1, 0, EQ, -1, -1, I
+EC_KEY_check_key, -1, 0, EQ, -1, -1, I
+EC_KEY_set_public_key_affine_coordinates, -1, 0, EQ, -1, -1, I
+
+EC_POINT_add, -1, 0, EQ, -1, -1, I
+EC_POINT_dbl, -1, 0, EQ, -1, -1, I
+EC_POINT_invert, -1, 0, EQ, -1, -1, I
+EC_POINT_make_affine, -1, 0, EQ, -1, -1, I
+EC_POINTs_make_affine, -1, 0, EQ, -1, -1, I
+EC_POINT_mul, -1, 0, EQ, -1, -1, I
+EC_POINT_set_to_infinity, -1, 0, EQ, -1, -1, I
+EC_POINT_set_Jprojective_coordinates_GFp, -1, 0, EQ, -1, -1, I
+EC_POINT_get_Jprojective_coordinates_GFp, -1, 0, EQ, -1, -1, I
+EC_POINT_set_affine_coordinates_GFp, -1, 0, EQ, -1, -1, I
+EC_POINT_get_affine_coordinates_GFp, -1, 0, EQ, -1, -1, I
+EC_POINT_set_compressed_coordinates_GFp, -1, 0, EQ, -1, -1, I
+EC_POINT_set_affine_coordinates_GF2m, -1, 0, EQ, -1, -1, I
+EC_POINT_get_affine_coordinates_GF2m, -1, 0, EQ, -1, -1, I
+EC_POINT_set_compressed_coordinates_GF2m, -1, 0, EQ, -1, -1, I
+EC_POINT_oct2point, -1, 0, EQ, -1, -1, I
+EC_POINT_is_on_curve, -1, -1, EQ, -1, -1, I
+EC_POINT_cmp, -1, -1, EQ, -1, -1, I
+
+PEM_write_X509, -1, 0, EQ, -1, -1, I
+PEM_ASN1_write, -1, 0, EQ, -1, -1, I
+PEM_ASN1_write_bio, -1, 0, EQ, -1, -1, I
+PEM_read_bio_X509, -1, 0, EQ, -1, -1, P
+
+i2a_ASN1_INTEGER, -1, -1, EQ, -1, -1, I
+a2i_ASN1_INTEGER, -1, 0, EQ, -1, -1, I
+ASN1_INTEGER_set, -1, 0, EQ, -1, -1, I
+ASN1_STRING_copy, -1, 0, EQ, -1, -1, I
+
+i2d_ECPKParameters_bio, -1, 0, EQ, -1, -1, I
+i2d_ECPKParameters_fp, -1, 0, EQ, -1, -1, I
+ECPKParameters_print, -1, 0, EQ, -1, -1, I
+ECPKParameters_print_fp, -1, 0, EQ, -1, -1, I
+
+X509_get_serialNumber, -1, 0, EQ, -1, -1, P
+i2d_X509, -1, 0, LT, -1, -1, I,
+i2d_X509_bio, -1, 0, EQ, -1, -1, I
+i2d_X509_fp, -1, 0, EQ, -1, -1, I
+d2i_x509, -1, 0, EQ, -1, -1, P
+d2i_x509_bio, -1, 0, EQ, -1, -1, P
+d2i_x509_fp, -1, 0, EQ, -1, -1, P
+
+X509_CRL_get0_by_serial, -1, 0, EQ, -1, -1, I
+X509_CRL_get0_by_cert, -1, 0, EQ, -1, -1, I
+X509_REVOKED_set_serialNumber, -1, 0, EQ, -1, -1, I
+X509_REVOKED_set_revocationDate, -1, 0, EQ, -1, -1, I
+X509_CRL_add0_revoked, -1, 0, EQ, -1, -1, I
+X509_CRL_sort, -1, 0, EQ, -1, -1, I
+
+__RETURN_VAL__, -1, 1, NE, -1, -1, I
+

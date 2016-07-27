@@ -1,0 +1,53 @@
+asn1_get_int, -1, -108, GE, -96, LE, I
+asn1_get_tag, -1, -108, GE, -96, LE, I
+asn1_write_len, -1, -108, GE, -96, LE, I
+asn1_write_tag, -1, -108, GE, -96, LE, I
+asn1_write_raw_buffer, -1, -108, GE, -96, LE, I
+asn1_write_oid, -1, -108, GE, -96, LE, I
+asn1_get_alg, -1, -108, GE, -96, LE, I
+asn1_get_mpi, -1, -108, GE, -96, LE, I
+
+mpi_fill_random, -1, -16, GE, -2, LE, I
+mpi_lset, -1, -16, GE, -2, LE, I
+mpi_grow, -1, -16, GE, -2, LE, I
+mpi_gcd, -1, -16, GE, -2, LE, I
+mpi_write_binary, -1, -16, GE, -2, LE, I
+mpi_read_binary, -1, -16, GE, -2, LE, I
+mpi_read_string, -1, -16, GE, -2, LE, I
+mpi_sub_int, -1, -16, GE, -2, LE, I
+mpi_copy, -1, -16, GE, -2, LE, I
+mpi_add_mpi, -1, -16, GE, -2, LE, I
+mpi_sub_mpi, -1, -16, GE, -2, LE, I
+mpi_sub_abs, -1, -16, GE, -2, LE, I
+mpi_inv_mod, -1, -16, GE, -2, LE, I
+mpi_mul_mpi, -1, -16, GE, -2, LE, I
+mpi_mod_mpi, -1, -16, GE, -2, LE, I
+mpi_grow, -1, -16, GE, -2, LE, I
+mpi_exp_mod, -1, -16, GE, -2, LE, I
+mpi_inv_mod, -1, -16, GE, -2, LE, I
+
+aes_setkey_enc, -1, -34, GE, -32, LE, I
+aes_crypt_ecb, -1, -34, GE, -32, LE, I
+
+ecp_use_known_dp, -1, -20352, GE, -19456, LE, I
+ecp_copy, -1, -20352, GE, -19456, LE, I
+ecp_mul, -1, -20352, GE, -19456, LE, I
+
+rsa_public, -1, -17536, GE, -16512, LE,I
+rsa_private, -1, -17536, GE, -16512, LE, I 
+
+x509_crt_parse, -1, -10496, GE, -8320, LE, I
+md_init_ctx, -1, -20992, GE, -20608, LE, I
+md_hmac_starts, -1, -20992, GE, -20608, LE, I
+md_hmac_update, -1, -20992, GE, -20608, LE, I
+md_hmac_finish, -1, -20992, GE, -20608, LE, I
+md_finish, -1, -20992, GE, -20608, LE, I
+md_update, -1, -20992, GE, -20608, LE, I
+ssl_handshake, -1, -28800, GE, -27264, LE, I
+ssl_send_alert_message, -1, -28800, GE, -27264, LE, I
+ssl_write_record, -1, -28800, GE, -27264, LE, I
+ssl_write, -1, -86, GE, -80, LE, I
+ssl_read, -1, -86, GE, -80, LE, I
+cipher_update, -1, -25344, GE, -24704, LE, I
+
+__RETURN_VAL__, -1, 0, NE, -1, -1, I

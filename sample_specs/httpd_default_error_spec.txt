@@ -1,0 +1,8 @@
+1ap_log_error
+1ap_log_error_
+1ap_log_error__
+1ap_log_cerror
+1ap_log_cerror_
+1ap_log_cerror__
+1ssl_log_ssl_error
+__RETURN_VAL__, -1, 0, NE, -1, -1, I
