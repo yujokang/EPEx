@@ -5,8 +5,11 @@
 **E**rror **P**ath **Ex**ploration is a Clang checker
 that detects missing error handling cases in C code.
 The technique is described in detail in the paper,
-*Automatically Detecting Error Handling Bugs using Error Specifications*,
-by Suman Jana, Yuan Kang, Samuel Roth and Baishakhi Ray,
+[Automatically Detecting Error Handling Bugs using Error Specifications](https://yujokang.github.io/papers/epex_2016.pdf),
+by [Suman Jana](http://sumanj.info/),
+[Yuan Kang](https://yujokang.github.io/),
+[Samuel Roth](https://www.linkedin.com/in/samuelroth1) and
+[Baishakhi Ray](http://rayb.info/),
 presented at the 2016 USENIX Security Symposium.
 
 ##Why is EPEx useful?
