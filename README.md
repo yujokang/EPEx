@@ -67,7 +67,7 @@ that contains the include folder.
 1. Go to the directory
 `[path to llvm source folder]tools/clang/lib/StaticAnalyzer/Checkers`
 2. Add the source:
-Enter `ln -s . [path to this release folder]EPEx.cpp`
+Enter `ln -s [path to this release folder]EPEx.cpp .`
 3. Register the `alpha.unix.Epex` checker:
 Open `../../../include/clang/StaticAnalyzer/Checkers/Checkers.td`, look for the block starting with
 `let ParentPackage = UnixAlpha in {`,
