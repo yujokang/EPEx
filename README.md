@@ -112,7 +112,7 @@ by putting `-1` in their place.
 2. Global integer specification
 (the error value is NULL for pointers and false for booleans):
 ```
-__RETURN_VAL__, [argument count], [first bound operator], [first bound value], , [second bound operator], [second bound value], I
+__RETURN_VAL__, [argument count], [first bound value], [first bound operator], [second bound value], [second bound operator], I
 ```
 3. Logging functions: `1[name of logging function]`
 
