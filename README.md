@@ -142,7 +142,7 @@ global specifications and logging functions:
   a. Keep error_spec.txt in the current working directory
   b. Enter:
   ```
-  [binary directory]clang -cc1 -w -analyze -analyzer-opt-analyze-headers -analyzer-checker=$2 -I/usr/include -I[build directory]lib/clang/[version]/include/ [source file]
+  [binary directory]clang -cc1 -w -analyze -analyzer-opt-analyze-headers -analyzer-checker=alpha.unix.EPEx -I/usr/include -I[build directory]lib/clang/[version]/include/ [source file]
   ```
 2. A whole project:
   a. To keep the configuration file available in all directories,
