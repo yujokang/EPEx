@@ -401,8 +401,8 @@ size_t EPEx::parseOnce(char *buf)
 
 	/* Count the function, if it is valid. */
 	if ((func_name) && (func_name[0] != '\n')) {
-		assert(fSpecs.addSpec(func_name, nargs, lbound, lboundop,
-				      ubound, uboundop, ret_type));
+		fSpecs.addSpec(func_name, nargs, lbound, lboundop,
+			       ubound, uboundop, ret_type);
 		count++;
 	}
 
