@@ -125,6 +125,7 @@ are stored in the following files, which you can use directly:
 * OpenSSL: openssl_error_spec.txt
 * mbedTLS / PolarSSL: polarssl_error_spec.txt
 * wolfSSL: wolfssl_error_spec.txt
+
 ####Applications using OpenSSL
 The error specifications for external OpenSSL functions are stored in
 ssl_error_spec.txt.
