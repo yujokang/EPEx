@@ -213,19 +213,19 @@ public:
 
 	/*
 	 * Check if the function returned an error value.
-	 * IsError:	the result output
-	 * name:	the name of the function whose return value
-	 *		needs to be checked
-	 * ret:		the return value
-	 * ret_type:	the type of the return value
-	 * C:		the checker context
-	 * old_state:	the old checker state
-	 * care_binary:	for binary return types
-	 *		(NULL/non-NULL pointers and booleans),
-	 *		do we care about having a specification
-	 *		with the matching name and type?
-	 * n_args:	the number of arguments to the function
-	 * returns	the new state, if it changed, or NULL
+	 * isErrorPathOut:	the result output, which is NOT_ERROR by default
+	 * name:		the name of the function whose return value
+	 *			needs to be checked
+	 * ret:			the return value
+	 * ret_type:		the type of the return value
+	 * C:			the checker context
+	 * old_state:		the old checker state
+	 * care_binary:		for binary return types
+	 *			(NULL/non-NULL pointers and booleans),
+	 *			do we care about having a specification
+	 *			with the matching name and type?
+	 * n_args:		the number of arguments to the function
+	 * returns		the new state, if it changed, or NULL
 	 */
 	ProgramStateRef isError(enum IsError *isErrorPathOut, StringRef name,
 				SVal ret, QualType ret_type, CheckerContext &C,
@@ -478,7 +478,7 @@ void EPEx::checkPostCall(const CallEvent &Call, CheckerContext &C) const
 	const clang::Decl *DC = C.getCurrentAnalysisDeclContext()->getDecl();
 	std::string caller = DC->getAsFunction()->getNameInfo().getAsString();
 
-	/* Make sure to return error for multiple calls to the same function*/
+	/* Make sure to return error for multiple calls to the same function. */
 	AnalyzedFuncsTy funcs = state->get<AnalyzedFuncs>();
 	if (!funcs.isEmpty()) {
 		const SymState sstate = funcs.getHead();
@@ -511,20 +511,23 @@ void EPEx::checkPostCall(const CallEvent &Call, CheckerContext &C) const
 	/* Check if the function's return value makes the path an error path. */
 	new_state = isError(&isErrorPath, FName, ret, ret_type, C, state, true,
 			    (int) Call.getNumArgs());
-	if (new_state != NULL) {
+	if (isErrorPath >= MAYBE_ERROR) {
 		std::string line;
-		if (isErrorPath >= MAYBE_ERROR) {
-			if (last_err_call == "") {
-				line = loc + " " + FName.str();
-			} else {
-				new_state = new_state->remove<AnalyzedFuncs>();
-				line = loc + last_err_call;
-			}
-			new_state =
-			new_state->add<AnalyzedFuncs>(SymState(caller, line,
-							       FName.str()));
-			C.addTransition(new_state);
+		if (new_state == NULL) {
+			new_state = state;
 		}
+		if (last_err_call == "") {
+			line = loc + " " + FName.str();
+		} else {
+			new_state = new_state->remove<AnalyzedFuncs>();
+			line = loc + last_err_call;
+		}
+		new_state =
+		new_state->add<AnalyzedFuncs>(SymState(caller, line,
+						       FName.str()));
+	}
+	if (new_state != NULL) {
+		C.addTransition(new_state);
 	}
 }
 
@@ -689,8 +692,8 @@ void EPEx::checkPreStmt(const ReturnStmt *ret_stmt, CheckerContext &C) const
 	ret_type = DC->getAsFunction()->getReturnType();
 	new_state = isError(&isErrorPath, "__RETURN_VAL__", ret_val, ret_type,
 			    C, state, false, DONT_CARE);
-	if (new_state == NULL) {
-		goto cleanup;
+	if (new_state != NULL) {
+		state = new_state;
 	}
 
 	/* Check for NULL pointer derefences. */
@@ -704,9 +707,7 @@ void EPEx::checkPreStmt(const ReturnStmt *ret_stmt, CheckerContext &C) const
 		}
 	}
 
-	/*
-	 * Print the error handling status.
-	 */
+	/* Print the error handling status. */
 	if (need_printing) {
 		std::string status = "";
 		switch (isErrorPath) {
@@ -769,6 +770,8 @@ EPEx::isError(enum IsError *isErrorPathOut, StringRef name, SVal ret,
 	FuncErrSpec *FES = fSpecs.findSpec(name);
 	SVal lbound, ubound, tVal;
 
+	*isErrorPathOut = NOT_ERROR;
+
 	if (FES == NULL) {
 		return NULL;
 	}
@@ -817,7 +820,8 @@ EPEx::isError(enum IsError *isErrorPathOut, StringRef name, SVal ret,
 		 * Check second bound
 		 * if there is still a chance of being an error.
 		 */
-		if ((isErrorPath >= 0) && (FES->err_ubound_op != DONT_CARE)) {
+		if ((isErrorPath >= MAYBE_ERROR) &&
+		    (FES->err_ubound_op != DONT_CARE)) {
 			ubound = SVB.makeIntVal(FES->err_ubound, ret_type);
 			tVal = SVB.evalBinOpNN(state, (BinaryOperator::Opcode)
 						      FES->err_ubound_op,
@@ -828,7 +832,7 @@ EPEx::isError(enum IsError *isErrorPathOut, StringRef name, SVal ret,
 			std::tie(error, noerror) = CM.assumeDual(state, *TV);
 			if (!error && noerror) {
 				isErrorPath = NOT_ERROR;
-			} else if (!error && !noerror) {
+			} else if (error && noerror) {
 				isErrorPath = MAYBE_ERROR;
 				/*
 				 * Bad hack to avoid a Clang bug:
@@ -894,6 +898,9 @@ EPEx::isError(enum IsError *isErrorPathOut, StringRef name, SVal ret,
 	}
 
 	*isErrorPathOut = isErrorPath;
+	if (state == old_state) {
+		return NULL;
+	}
 	return state;
 }
 
